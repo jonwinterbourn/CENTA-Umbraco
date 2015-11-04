@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentType>
+  <Info>
+    <Name>Research Profile</Name>
+    <Alias>ResearchProfile</Alias>
+    <Icon>.sprTreeFolder</Icon>
+    <Thumbnail>folder.png</Thumbnail>
+    <Description />
+    <AllowAtRoot>False</AllowAtRoot>
+    <IsListView>False</IsListView>
+    <Master>MasterResearch</Master>
+    <Compositions>
+      <Composition>MasterResearch</Composition>
+    </Compositions>
+    <AllowedTemplates>
+      <Template>CentaProfile</Template>
+    </AllowedTemplates>
+    <DefaultTemplate>CentaProfile</DefaultTemplate>
+  </Info>
+  <Structure />
+  <GenericProperties>
+    <GenericProperty>
+      <Name>Last Name</Name>
+      <Alias>lastName</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Biography</Name>
+      <Alias>biography</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Display Name</Name>
+      <Alias>displayName</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>First Name</Name>
+      <Alias>firstName</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Job Title</Name>
+      <Alias>jobTitle</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Email</Name>
+      <Alias>email</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Telephone</Name>
+      <Alias>telephone</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Summary</Name>
+      <Alias>summary</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Skills</Name>
+      <Alias>skills</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Professional Associations</Name>
+      <Alias>professionalAssociations</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Research Interests</Name>
+      <Alias>researchInterests</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Awards</Name>
+      <Alias>awards</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Current projects and collaboration</Name>
+      <Alias>currentProjectsAndCollaboration</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Key papers</Name>
+      <Alias>keyPapers</Alias>
+      <Type>Umbraco.TinyMCEv3</Type>
+      <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Photo</Name>
+      <Alias>photo</Alias>
+      <Type>Umbraco.MediaPicker</Type>
+      <Definition>93929b9a-93a2-4e2a-b239-d99334440a59</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Institution</Name>
+      <Alias>institution</Alias>
+      <Type>Umbraco.DropDown</Type>
+      <Definition>69a98e0b-0595-4c40-9c59-a2fef8349059</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>CENTA Role</Name>
+      <Alias>centaRole</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Order</Name>
+      <Alias>order</Alias>
+      <Type>Umbraco.DropDown</Type>
+      <Definition>c1002bcf-a5c0-4b7f-a0b6-27491177c641</Definition>
+      <Tab>Profile</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+  </GenericProperties>
+  <Tabs>
+    <Tab>
+      <Id>20</Id>
+      <Caption>Profile</Caption>
+      <SortOrder>0</SortOrder>
+    </Tab>
+  </Tabs>
+</DocumentType>

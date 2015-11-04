@@ -1,0 +1,109 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CentaLayout.cshtml";
+	
+	// First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();    
+    
+    // Find all pages with document type alias umbNewsOverview
+    // We do that using the plural, umbNewsOverviews (note the extra "s" in the end)
+    // Then take the first one, as we know there will only be on news overview page
+    var profileList = CurrentPage;
+
+    // Similar to above: find all pages with document type umbNewsItem under the news overview page
+    // Then order them, first by publishDate (a property the editor can explicitly set on the news item)
+    // and then by createDate, which is set by Umbraco automatically when a page gets created.
+    //var profileItems = profileList.ResearchProfiles.OrderBy("lastName asc, firstName asc, jobTitle asc").Take(20);
+	//var profileItems = profileList.StudentProfiles.OrderBy("lastName asc, firstName asc, jobTitle asc").Take(20);
+	
+	//get children of both types of profile
+	var profileItems = profileList.Descendants()
+                   .Where("DocumentTypeAlias == \"StudentProfile\" || DocumentTypeAlias == \"ResearchProfile\"").OrderBy("order, lastName");
+}
+<!-- Header -->
+	<header id="header">
+	<!--Navigation Area Start-->
+    <div class="navigation-box">
+		<div class="container">
+			@{ Html.RenderPartial("centa-logo"); }
+        	<div class="top-bar-outer">
+				<div class="bottom-row">
+            		@{ Html.RenderPartial("centa-site-search-box"); }
+					@{ Html.RenderPartial("centa-top-navigation"); }
+          		</div>
+        	</div>
+    	</div>
+    </div>    
+    <!--Navigation Area End--> 
+     
+					
+	@{ Html.RenderPartial("centa-page-banner"); }
+  </header>
+  <!--Header End--> 
+	
+		
+	<div id="main">	
+	  
+	  	<section class="generic-heading">
+      		<div class="container">
+        		<h2>@Umbraco.Field("contentTitle")</h2>
+        		<strong class="title-line">@Umbraco.Field("titleLine")</strong>
+			</div>
+		</section>
+					
+		<section class="generic-content">
+			<div class="container">
+				@if (CurrentPage.HasValue("bodyText")) {
+				<div class="text-box">
+					@Umbraco.Field("bodyText")
+				</div>
+				}
+				
+				<div class="row profiles-list">
+					@foreach (var item in profileItems)
+                	{
+                    	<div class="span6">
+							<!--<section>-->
+							<h3><a href="@item.Url">@item.displayName</a></h3>
+							<!-- these need to be a fields in both document types, ideally from the parent-->
+							@if (item.HasValue("smallPhoto")) {
+								
+								<img class="profile" alt="@item.displayName" src="@Umbraco.Media(item.smallPhoto).Url" />
+							}
+							else {
+								<img class="profile profile-default" alt="@item.displayName" src="@Umbraco.Media(item.photo).Url" />
+							}
+							
+							@if (item.HasValue("projectTitle")) {
+							<span class="byline"><strong>Project:</strong> @item.projectTitle</span>
+							} else {
+							<span class="byline">@item.jobTitle</span>
+							}
+						
+							<br/><span class="byline">@item.institution</span>
+						</div>			
+                	}
+				</div>				
+
+			</div>
+		</section>
+					
+					
+					
+		<!-- indicator -->		  
+		<!-- check to see if indicator section is enabled or not -->
+		
+		@if (CurrentPage.displayIndicatorSection) {
+			<section class="indicator-section responsive-section">
+    	  		<div class="container">
+       			 <div class="responsive-section-inner">
+       			 	<div class="left-box">
+        		    	<!-- here -->
+						@Umbraco.Field("indicatorSection")
+					</div>
+    		    </div>
+    		  </div>
+    		</section>
+		}
+		<!-- indicator end -->			
+	</div>

@@ -1,0 +1,136 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CentaLayout.cshtml";
+	
+	// First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();    
+    
+    // Find all pages with document type alias umbNewsOverview
+    // We do that using the plural, umbNewsOverviews (note the extra "s" in the end)
+    // Then take the first one, as we know there will only be on news overview page
+    var oppList = CurrentPage;
+
+    // Similar to above: find all pages with document type umbNewsItem under the news overview page
+    // Then order them, first by publishDate (a property the editor can explicitly set on the news item)
+    // and then by createDate, which is set by Umbraco automatically when a page gets created.
+	var projects = homePage.Descendants("ResearchOpportunity");
+	
+	var theme = string.IsNullOrWhiteSpace(oppList.Title) ? "" : oppList.Title;
+	
+	//filter by parameter or show all items
+	if (!string.IsNullOrEmpty(Request.QueryString["theme"])) { 
+		theme = Request.QueryString["theme"];
+	}
+	
+	var oppItems = projects.Where("theme.Contains(@0)", theme);
+}
+<!-- Header -->
+	<header id="header">
+	<!--Navigation Area Start-->
+    <div class="navigation-box">
+		<div class="container">
+			@{ Html.RenderPartial("centa-logo"); }
+        	<div class="top-bar-outer">
+				<div class="bottom-row">
+            		@{ Html.RenderPartial("centa-site-search-box"); }
+					@{ Html.RenderPartial("centa-top-navigation"); }
+          		</div>
+        	</div>
+    	</div>
+    </div>    
+    <!--Navigation Area End--> 
+     
+					
+	@{ Html.RenderPartial("centa-page-banner"); }
+  </header>
+  <!--Header End--> 
+	
+		
+	<div id="main">	
+	  
+	  	<section class="generic-heading">
+      		<div class="container">
+        		<h2>@Umbraco.Field("contentTitle")</h2>
+        		<strong class="title-line">@Umbraco.Field("titleLine")</strong>
+			</div>
+		</section>
+					
+		<section class="generic-content">
+			<div class="container">
+				@if (CurrentPage.HasValue("bodyText")) {
+				<div class="text-box">
+					@Umbraco.Field("bodyText")
+				</div>
+				}
+
+<table border="0" class="display" id="table_id" data-page-length="25" width="100%">
+	<thead>
+		<tr><th>Project Title</th><th>Partner</th><th>Project Supervisors</th><th>Keywords</th></tr>
+	</thead>
+	<tfoot>
+		<tr><th>Project Title</th><th>Partner</th><th>Project Supervisors</th><th>Keywords</th></tr>
+	</tfoot>
+	<tbody>
+		@foreach (var item in oppItems)
+        {
+        	<tr>
+				<td><a href="@item.Url">@item.projectTitle</a></td>
+				<td>@item.institution</td>
+				<td>@item.supervisors</td>
+				<td>@item.keywords.Replace(",", ", ")</td>
+			</tr>
+        }	
+	</tbody>
+</table>
+	
+			</div>
+		</section>
+					
+		<!-- indicator -->		  
+		<!-- check to see if indicator section is enabled or not -->
+		
+		@if (CurrentPage.displayIndicatorSection) {
+			<section class="indicator-section responsive-section">
+    	  		<div class="container">
+       			 <div class="responsive-section-inner">
+       			 	<div class="left-box">
+        		    	<!-- here -->
+						@Umbraco.Field("indicatorSection")
+					</div>
+    		    </div>
+    		  </div>
+    		</section>
+		}
+		<!-- indicator end -->			
+	</div>
+			
+			
+<script>
+	$(function() {
+		// Setup - add a text input to each footer cell
+		$('#table_id tfoot th').each( function () {
+    	//$('#table_id thead th').each( function () {
+    	    var title = $('#table_id thead th').eq( $(this).index() ).text();
+    	    $(this).html( '<br/><input type="text" placeholder="Search '+title+'" />' );
+			//$(this).append( '<br/><input type="text" placeholder="Search '+title+'" />' );
+    	} );
+		
+		var table = $('#table_id').DataTable();	
+		
+		// Apply the search
+    	table.columns().every( function () {
+        var that = this;
+ 
+        	$( 'input', this.footer() ).on( 'keyup change', function () {
+			//$( 'input', this.header() ).on( 'keyup change', function () {
+            	that
+                	.search( this.value )
+                	.draw();
+        	} );
+    	} );
+	
+	
+	});
+</script>			
+<link href="@Url.Content("~/css/jquery.dataTables.min.css")" rel="stylesheet">
+<script src="@Url.Content("~/scripts/centa/jquery.dataTables.min.js")"></script> 

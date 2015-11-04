@@ -1,0 +1,56 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@*
+    Macro to display child pages below the root page of a standard website.
+    Also highlights the current active page/section in the navigation with
+    the css class "current".
+*@
+
+@{
+    @* Get the root of the website *@
+    var root = CurrentPage.AncestorOrSelf(1);
+}
+
+
+	
+	<div class="nav-box">
+            <div class="navbar">
+              <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <div class="nav-collapse collapse">
+                <nav id="nav">
+				  <ul>
+                    <li><a href="/">Home</a></li><!-- <li class="active"><a href="index.html">Home</a></li> -->
+                    <li><a href="/about/">About Us</a>
+					  <ul>
+						<li><a href="/about/management/">Management Team</a></li>
+                        <!--<li><a href="/about/supervisors/">Our Supervisors</a></li>-->
+                        <li><a href="/about/students/">Our Students</a></li>
+						
+                      </ul>
+					</li>
+                    <li><a href="/partners/">Partners</a></li>
+                    <li><a href="/themes/">Themes</a>
+                      <ul>
+                        <li><a href="/themes/anthropogenic/">Anthropogenic Impact and Environmental Sustainability</a></li>
+                        <li><a href="/themes/dynamic-earth/">Dynamic Earth</a></li>
+                        <li><a href="/themes/evolution/">Evolution of Organisms and Ecosystems</a></li>
+                        <li><a href="/themes/organisms/">Organisms, ’omics and biogeochemistry</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/training/">Training</a></li>
+					<li><a href="/contact/">Contact Us</a></li>
+                  </ul>
+				<!--
+					<ul>
+    				@foreach (var page in root.Children.Where("Visible"))
+    					{
+        					<li class="@(page.IsAncestorOrSelf(CurrentPage) ? "current" : null)">
+            					<a href="@page.Url">@page.Name</a>
+        					</li>
+    					}
+					</ul>
+				-->	
+                </nav>
+              </div>
+            </div>
+            
+          </div>

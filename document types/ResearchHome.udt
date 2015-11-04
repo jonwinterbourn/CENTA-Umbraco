@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentType>
+  <Info>
+    <Name>Research Home</Name>
+    <Alias>ResearchHome</Alias>
+    <Icon>icon-home</Icon>
+    <Thumbnail>folder.png</Thumbnail>
+    <Description />
+    <AllowAtRoot>True</AllowAtRoot>
+    <IsListView>False</IsListView>
+    <Master>MasterResearch</Master>
+    <Compositions>
+      <Composition>MasterResearch</Composition>
+    </Compositions>
+    <AllowedTemplates>
+      <Template>CentaHomePage</Template>
+    </AllowedTemplates>
+    <DefaultTemplate>CentaHomePage</DefaultTemplate>
+  </Info>
+  <Structure>
+    <DocumentType>ResearchTextPage</DocumentType>
+    <DocumentType>ResearchProfile</DocumentType>
+    <DocumentType>ResearchOpportunity</DocumentType>
+  </Structure>
+  <GenericProperties>
+    <GenericProperty>
+      <Name>Hide Banner?</Name>
+      <Alias>hideBanner</Alias>
+      <Type>Umbraco.TrueFalse</Type>
+      <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Banner Header</Name>
+      <Alias>bannerHeader</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Banner Subheader</Name>
+      <Alias>bannerSubheader</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Banner Link Text</Name>
+      <Alias>bannerLinkText</Alias>
+      <Type>Umbraco.Textbox</Type>
+      <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Banner Link</Name>
+      <Alias>bannerLink</Alias>
+      <Type>Umbraco.ContentPickerAlias</Type>
+      <Definition>a6857c73-d6e9-480c-b6e6-f15f6ad11125</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Banner Background Image</Name>
+      <Alias>bannerBackgroundImage</Alias>
+      <Type>Umbraco.UploadField</Type>
+      <Definition>84c6b441-31df-4ffe-b67e-67d5bc3ae65a</Definition>
+      <Tab>Banner</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation />
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+  </GenericProperties>
+  <Tabs>
+    <Tab>
+      <Id>19</Id>
+      <Caption>Banner</Caption>
+      <SortOrder>0</SortOrder>
+    </Tab>
+  </Tabs>
+</DocumentType>

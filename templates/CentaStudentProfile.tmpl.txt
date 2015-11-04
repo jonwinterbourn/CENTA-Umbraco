@@ -1,0 +1,128 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CentaLayout.cshtml";
+	var pageTitle = string.IsNullOrWhiteSpace(CurrentPage.Title)
+        ? CurrentPage.Name
+        : CurrentPage.Title;
+}
+
+<!-- Header -->
+<header id="header">
+	<!--Navigation Area Start-->
+    <div class="navigation-box">
+    	<div class="container">
+			@{ Html.RenderPartial("centa-logo"); }
+        	<div class="top-bar-outer">
+				<div class="bottom-row">
+            		@{ Html.RenderPartial("centa-site-search-box"); }
+					@{ Html.RenderPartial("centa-top-navigation"); }
+          		</div>
+        	</div>
+    	</div>
+    </div>    
+    <!--Navigation Area End--> 
+					
+	@{ Html.RenderPartial("centa-page-banner"); }
+</header>
+<!--Header End--> 
+	
+<div id="main">	
+	
+		  	<section class="generic-heading">
+      		<div class="container">
+        		<h2>@Umbraco.Field("contentTitle")</h2>
+        		<strong class="title-line">@Umbraco.Field("institution")</strong> 
+			</div>
+		</section>
+					
+		<section class="generic-content">
+			<div class="container">
+				
+				<div class="row-fluid">
+					
+					<div class="span8">
+						<div class="text-box">
+						@if (CurrentPage.HasValue("inspiration")) {		
+							<h3>Inspiration</h3>
+							
+								<p>@Umbraco.Field("inspiration")</p>
+							
+						}
+						@if (CurrentPage.HasValue("projectTitle")) {		
+							<h3>Project</h3>
+							
+								<p>@Umbraco.Field("projectTitle")</p>
+							
+						}
+						@if (CurrentPage.HasValue("supervisors")) {		
+							<h3>Supervisors</h3>
+							
+								<p>@Umbraco.Field("supervisors")</p>
+							
+						}
+						@if (CurrentPage.HasValue("previousActivity")) {		
+							<h3>Previous Activity</h3>
+							<p>
+								@Umbraco.Field("previousActivity")
+							</p>
+						}
+						@if (CurrentPage.HasValue("whyDoctoralResearch")) {
+							<h3>Why Docotoral Research?</h3>
+							
+								<p>@Umbraco.Field("whyDoctoralResearch")</p>
+							
+						}
+						@if (CurrentPage.HasValue("whyCentaStudentship")) {
+							<h3>Why CENTA Studentship?</h3>
+							
+								<p>@Umbraco.Field("whyCentaStudentship")</p>
+							
+						}
+						@if (CurrentPage.HasValue("phdSummary")) {
+							<h3>PhD Summary</h3>
+							
+								<p>@Umbraco.Field("phdSummary")</p>
+							
+						}
+						@if (CurrentPage.HasValue("futurePlans")) {
+							<h3>Future Plans</h3>
+							
+								<p>@Umbraco.Field("futurePlans")</p>
+							
+						}
+					</div>
+
+					</div>
+					<div class="span4">
+						<aside class="sidebar">
+						<div class="sidebar-tab">
+							<div class="tab-content">
+								<div class="sidebar-tab-content">
+									<img src="@Umbraco.Media(CurrentPage.photo).Url" alt="@Umbraco.Field("displayName")">
+								</div>
+							</div>
+						</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	
+		<!-- indicator -->		  
+		<!-- check to see if indicator section is enabled or not -->
+		
+		@if (CurrentPage.displayIndicatorSection) {
+			<section class="indicator-section responsive-section">
+    	  		<div class="container">
+       			 <div class="responsive-section-inner">
+       			 	<div class="left-box">
+        		    	<!-- here -->
+						@Umbraco.Field("indicatorSection")
+					</div>
+    		    </div>
+    		  </div>
+    		</section>
+		}
+		<!-- indicator end -->			
+</div>

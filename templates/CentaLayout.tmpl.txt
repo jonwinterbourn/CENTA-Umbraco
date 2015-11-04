@@ -1,0 +1,126 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<html lang="en">
+	<!--<![endif]-->
+	<head data-templateId="@CurrentPage.TemplateId">
+    <title>@Umbraco.Field("title", altFieldAlias: "pageName") | @Umbraco.Field("siteName", recursive: true) - ECO RESPONSIVE</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="@Umbraco.Field("description", recursive: true)" />
+    <meta name="keywords" content="@Umbraco.Field("keywords", recursive: true)" />
+
+	<!--Google Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700,600,800' rel='stylesheet' type='text/css'>
+    
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Custom Css-->
+	<link href="@Url.Content("~/css/centa-custom.css")" rel="stylesheet">
+	<link href="@Url.Content("~/css/centa-custom2.css")" rel="stylesheet">
+	<!--Bootstrap 2.3.2 Css-->
+	<link href="@Url.Content("~/css/centa-bootstrap.css")" rel="stylesheet">
+	<link href="@Url.Content("~/css/centa-bootstrap2.css")" rel="stylesheet">
+	<!--Bootstrap Responsive Css-->
+	<link href="@Url.Content("~/css/centa-bootstrap-responsive.css")" rel="stylesheet">
+	<!--Color Css Start-->
+	<link href="@Url.Content("~/css/centa-color.css")" rel="stylesheet">
+	
+	
+	<!--Favicon Css-->
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<!--Font Awesome-->
+	<link href="@Url.Content("~/css/centa-font-awesome.css")" rel="stylesheet">
+	<!--BX Slider-->
+	<link href="@Url.Content("~/css/centa-jquery.bxslider.css")" rel="stylesheet">
+	<!--Animation Css-->
+	<link href="@Url.Content("~/css/centa-cp_load.css")" rel="stylesheet">
+	<!--Pretty Photo Css-->
+	<link href="@Url.Content("~/css/centa-prettyPhoto.css")" media="screen"/>
+	<!--HTML5 JS-->
+	<script src="@Url.Content("~/scripts/centa/html5.js")"></script>
+	<!-- Color Css Files Start -->
+	<link href="@Url.Content("~/css/centa-color.css")" title="styles1" media="screen" />
+	<!-- Color Css Files End -->
+	
+	<!--JQUERY Start--> 
+	<!--Jquery 1.11.1 Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.js")"></script> 
+	
+</head>
+<body>
+	<!--Wrapper Start-->
+    <div id="wrapper"> 
+	
+	@RenderBody()
+		
+	
+<footer id="footer"> 
+    <!--Footer Section 2 Start-->
+    <section class="footer-section-2">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span4">
+          		@{ Html.RenderPartial("centa-twitter-feed"); }  
+          </div>
+		  <div class="span2">
+			<!-- content here -->
+		  </div>
+          <div class="span6">
+			  	@{ Html.RenderPartial("centa-contact-us-box"); }  
+		  </div>
+
+		  
+		</div>
+      </div>
+    </section>
+    <!--Footer Section 2 End--> 
+    
+    
+	<!--CopyRights Section Start-->
+    <section class="copyrights-section">
+      	<div class="container">
+        	@{ Html.RenderPartial("centa-copyright-section"); }  
+		</div>
+    </section>
+    <!--CopyRights Section End--> 
+  </footer>
+  <!--Footer End-->				
+				
+  </div>
+  <!--Wrapper End--> 					
+
+		
+	<!--other scripts -->
+	<!--Bootstrap Js--> 
+	<script src="@Url.Content("~/scripts/centa/bootstrap.js")"></script> 
+	<!--Modernizr Js--> 
+	<script src="@Url.Content("~/scripts/centa/modernizr.custom.97074.js")"></script> 
+	<!--Recent News Posts Images Effect Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.hoverdir.js")"></script> 
+	<!--Bx Slider Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.bxslider.js")"></script> 
+	<!--Next Event Contdown Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.plugin.js")"></script> 
+	<!--Next Event Contdown Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.countdown.js")"></script> 
+	<!--Our Chrity Store JS--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.flexisel.js")"></script> 
+	<!--Parallax Effect Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.stellar.min.js")"></script> 
+	<!--Footer Map Js--> 
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+	<!--Pretty Photo Js--> 
+	<script src="@Url.Content("~/scripts/centa/jquery.prettyPhoto.js")"></script> 
+
+	<!--Custom Js--> 
+	<script src="@Url.Content("~/scripts/centa/custom.js")"></script>
+	<script src="@Url.Content("~/scripts/centa/functions.js")"></script>
+					
+</body>
+	
+</html>

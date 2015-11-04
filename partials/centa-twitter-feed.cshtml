@@ -1,0 +1,22 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+
+	
+<div class="latest-twitter-box">
+    <h4>Twitter updates</h4>
+<div>
+	<span class="twitter-updates">
+    	<a class="link account-group js-account-group js-action-profile js-user-profile-link js-nav" href="http://www.twitter.com/CENTA_NERC" data-user-id="2587653642">Follow on Twitter</a>
+	</span>
+</div>
+			<div id="twitter_feed" class="twitter-updates">	
+	
+	</div>
+</div>	
+
+<script>
+	$( document ).ready(function() {
+		//fetchTweets(name of account, number of tweets)
+		fetchTweets("CENTA_NERC", 3)
+	});
+</script>

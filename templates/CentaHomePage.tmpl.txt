@@ -1,0 +1,79 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CentaLayout.cshtml";
+}
+<!-- Header -->
+	<header id="header">
+	<!--Navigation Area Start-->
+    <div class="navigation-box home-page">
+    	<div class="container">
+			@{ Html.RenderPartial("centa-logo"); }
+        	<div class="top-bar-outer">
+				<div class="bottom-row">
+            		@{ Html.RenderPartial("centa-site-search-box"); }
+					@{ Html.RenderPartial("centa-top-navigation"); }
+          		</div>
+        	</div>
+      	</div>
+    </div>
+    
+    <!--Navigation Area End--> 
+     
+					
+	@{ Html.RenderPartial("centa-home-banners"); }
+
+
+</header>
+  <!--Header End--> 
+	
+
+	  
+	  
+<div id="main" class="spacing">	
+
+	<!-- indicator -->		  
+<!-- check to see if indicator section is enabled or not -->
+	
+	@if (CurrentPage.displayIndicatorSection) {
+		<section class="indicator-section responsive-section">
+      		<div class="container">
+       		 <div class="responsive-section-inner">
+       		 	<div class="left-box">
+        	    	<!-- here -->
+					@Umbraco.Field("indicatorSection")
+				</div>
+    	    </div>
+    	  </div>
+    	</section>
+	}
+<!-- indicator end -->
+	
+	
+	<!-- Main -->
+	<section class="our-services" id="scrool-2">
+      <div class="container">		  
+		  
+        <div class="generic-heading">
+        	<h2>@Umbraco.Field("contentTitle")</h2>
+			
+			
+        	<strong class="title-line">@Umbraco.Field("titleLine")</strong> </div>
+        
+				
+			@{ Html.RenderPartial("centa-home-badges"); }
+
+			<!-- content, if there -->
+			@if (CurrentPage.HasValue("bodyText")) {
+				<div class="row">
+          			<div class="span12">
+         				<div class="text-box">
+							@Umbraco.Field("bodyText")
+						</div>
+          			</div>
+        		</div>
+			}
+			  
+      </div>
+    </section>
+<!-- /Main -->
+</div>

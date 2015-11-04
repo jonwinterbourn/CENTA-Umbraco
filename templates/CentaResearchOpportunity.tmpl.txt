@@ -1,0 +1,203 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CentaLayout.cshtml";
+	var pageTitle = string.IsNullOrWhiteSpace(CurrentPage.Title)
+        ? CurrentPage.Name
+        : CurrentPage.Title;
+	
+	var keys = CurrentPage.Keywords.Split(',');
+}
+
+<!-- Header -->
+<header id="header">
+	<!--Navigation Area Start-->
+    <div class="navigation-box">
+    	<div class="container">
+			@{ Html.RenderPartial("centa-logo"); }
+        	<div class="top-bar-outer">
+				<div class="bottom-row">
+            		@{ Html.RenderPartial("centa-site-search-box"); }
+					@{ Html.RenderPartial("centa-top-navigation"); }
+          		</div>
+        	</div>
+    	</div>
+    </div>    
+    <!--Navigation Area End--> 
+					
+	@{ Html.RenderPartial("centa-page-banner"); }
+</header>
+<!--Header End--> 
+	
+<div id="main">	
+	  	<div class="container">
+	  		<div class="donation-rank-box"> 
+        	  <ul>
+        	    <li>
+        	      <div class="rank-box"><strong class="rank">Project</strong></div>
+        	      <div class="donate-box-2"><strong class="title">@Umbraco.Field("projectTitle")</strong></div>
+        	    </li>
+        	    <li>
+        	      <div class="rank-box"><strong class="rank">Host</strong></div>
+        	      <div class="donate-box-2"><strong class="title">@Umbraco.Field("institution")</strong></div>
+        	    </li>
+        	    <li>
+        	      <div class="rank-box"><strong class="rank">How to Apply</strong></div>
+        	      <div class="donate-box-2"><strong class="title"> <a href="@Umbraco.Field("applyOnline")">@Umbraco.Field("applyOnline")</a></strong></div>
+        	    </li>
+            
+          		</ul>
+        	</div>
+		
+		<!--		  
+		<section class="generic-heading">
+      		<div class="container">
+        		<h2>@Umbraco.Field("projectTitle")</h2>
+        		<strong class="title-line">@Umbraco.Field("titleLine")</strong>
+			</div>
+		</section>
+		-->
+					
+		<div class="row-fluid">
+          <div class="span8">
+            <div class="blog-content">
+
+              <div class="blog-box">
+                <!-- <div class="frame"><a href="#"><img src="images/blog/blog-img-1.jpg" alt="img"></a></div> -->
+              
+                <div class="text-box">
+                  
+					@if (CurrentPage.HasValue("overview") ) {	
+	                	<h2 class="research-project">Overview</h2>
+						@Umbraco.Field("overview")
+					}
+
+					@if (CurrentPage.HasValue("fig1")) {	
+						<div class="image-box research-project-fig">
+							<img class="fig1" alt="@Umbraco.Field("fig1Description")" src="@Umbraco.Media(CurrentPage.fig1).Url" />
+							<span class="byline">@Umbraco.Field("fig1Description")</span>
+						</div>
+							
+					}
+
+					@if (CurrentPage.HasValue("methodology") ) {	
+						<h2 class="research-project">Methodology</h2>
+						@Umbraco.Field("methodology")
+					}
+                  
+					@if (CurrentPage.HasValue("training") ) {
+						<h2 class="research-project">Training and Skills</h2>
+						@Umbraco.Field("training")
+					}
+
+					@if (CurrentPage.HasValue("timeline") ) {
+						<h2 class="research-project">Timeline</h2>
+						@Umbraco.Field("timeline")
+					}
+					
+					@if (CurrentPage.HasValue("partners") ) {
+						<h2 class="research-project">Partners and collaboration (including CASE)</h2>						
+						@Umbraco.Field("partners")
+					}
+
+					@if (CurrentPage.HasValue("furtherDetails") ) {
+						<h2 class="research-project">Further Details</h2>						
+						@Umbraco.Field("furtherDetails")
+					}
+
+
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span4">
+            <aside class="sidebar"> 
+             
+              
+              <!--Sidebar Tab Start-->
+              <div class="sidebar-tab">
+                <ul class="nav nav-tabs" id="myTab">
+                  <li class="active"><a href="#tab-1">Information</a></li>
+                           
+                </ul>
+                <div class="tab-content">
+                   <div class="tab-pane active" id="tab-1">
+                    <div class="sidebar-tab-content">
+                   
+						@{
+						if (CurrentPage.HasValue("relatedStaff") ) {
+							
+							<strong class="title">Supervisory Team</strong>
+                   			<!-- tree test -->
+							
+							var dynamicPublishedMNTPNodeListCSV = CurrentPage.relatedStaff.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+    						var dynamicMNTPCollectionCSV = Umbraco.Content(dynamicPublishedMNTPNodeListCSV);
+    						
+							<ul>
+							@foreach (var item in dynamicMNTPCollectionCSV)
+						    	{     
+									var linkUrl = item.Url;
+        							<li>
+										<div class="thumb"><a href="@linkUrl"><img alt="@item.displayName" src="@Umbraco.Media(item.photo).Url"></a></div>
+										<div class="text-box">
+                       			    		<p><a href="@linkUrl">@item.displayName</a></p>
+                            				<p class="mnt">@item.Summary</p>
+										</div>
+									</li>
+    							}       
+							</ul>
+						   
+						}
+					}
+                     
+
+					@if (CurrentPage.HasValue("furtherReading") ) {
+                      <h2>Further reading</h2>
+					  @Umbraco.Field("furtherReading")
+					}	
+
+				@if (CurrentPage.HasValue("keywords") ) {
+					<h2>Keywords</h2>
+            	    <div class="tag-box">
+                		<ul>
+							@foreach (var item in keys) {
+								<li><a href="/search.aspx?s=@item">@item</a></li>
+							}	
+                		</ul>	  
+					</div>
+				}
+              
+						</div>
+        
+                </div>
+              </div>
+              <!--Sidebar Tab End--> 
+              
+              <!--Charity Store Start-->
+             
+              <!--Tags Box Start-->
+                           
+              <!--Tags Box End--> 
+              
+            </div></aside>
+          </div>
+        </div>
+	</div>
+
+		<!-- indicator -->		  
+		<!-- check to see if indicator section is enabled or not -->
+		
+		@if (CurrentPage.displayIndicatorSection) {
+			<section class="indicator-section responsive-section">
+    	  		<div class="container">
+       			 <div class="responsive-section-inner">
+       			 	<div class="left-box">
+        		    	<!-- here -->
+						@Umbraco.Field("indicatorSection")
+					</div>
+    		    </div>
+    		  </div>
+    		</section>
+		}
+		<!-- indicator end -->			
+	</div>
